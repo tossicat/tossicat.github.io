@@ -1,10 +1,10 @@
 ---
-title: Introduction
+title: Tossi Cat Project
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
 ---
 
-**Welcome to Astro!**
+**토시캣 프로젝트에 온 것을 환영합니다!**
 
 This is the `docs` starter template. It contains all of the features that you need to build a Markdown-powered documentation site, including:
 
