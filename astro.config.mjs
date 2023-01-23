@@ -15,5 +15,5 @@ import react from '@astrojs/react';
 
 export default defineConfig({
 	site: 'https://tossicat.github.io',
-	base: '/tossicat',
+	// base: '/tossicat',
   });
