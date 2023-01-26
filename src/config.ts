@@ -26,7 +26,8 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-	English: 'en',
+	// English: 'en',
+	한글: 'ko',
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
@@ -46,12 +47,20 @@ export type Sidebar = Record<
 	Record<string, { text: string; link: string }[]>
 >;
 export const SIDEBAR: Sidebar = {
-	en: {
+	// en: {
+	// 	'Section Header': [
+	// 		{ text: 'Introduction', link: 'en/introduction' },
+	// 		{ text: 'TossiCat core', link: 'en/TossiCat_core' },
+	// 		{ text: 'Page 2', link: 'en/page-2' },
+	// 		{ text: 'Page 3', link: 'en/page-3' },
+	// 	],
+	// },
+	ko: {
 		'Section Header': [
-			{ text: 'Introduction', link: 'en/introduction' },
-			{ text: 'Page 2', link: 'en/page-2' },
-			{ text: 'Page 3', link: 'en/page-3' },
+			{ text: 'Introduction', link: 'ko/introduction' },
+			{ text: 'TossiCat core', link: 'ko/TossiCat_core' },
+			{ text: 'Page 2', link: 'ko/page-2' },
+			{ text: 'Page 3', link: 'ko/page-3' },
 		],
-		'Another Section': [{ text: 'Page 4', link: 'en/page-4' }],
 	},
 };
