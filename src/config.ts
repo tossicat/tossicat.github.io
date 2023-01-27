@@ -1,7 +1,7 @@
 export const SITE = {
-	title: 'Documentation',
+	title: 'TossiCat',
 	description: 'Your website description.',
-	defaultLanguage: 'en_US',
+	defaultLanguage: 'ko',
 };
 
 export const OPEN_GRAPH = {
@@ -26,8 +26,8 @@ export type Frontmatter = {
 };
 
 export const KNOWN_LANGUAGES = {
-	// English: 'en',
 	한글: 'ko',
+	English: 'en',
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
@@ -47,14 +47,14 @@ export type Sidebar = Record<
 	Record<string, { text: string; link: string }[]>
 >;
 export const SIDEBAR: Sidebar = {
-	// en: {
-	// 	'Section Header': [
-	// 		{ text: 'Introduction', link: 'en/introduction' },
-	// 		{ text: 'TossiCat core', link: 'en/TossiCat_core' },
-	// 		{ text: 'Page 2', link: 'en/page-2' },
-	// 		{ text: 'Page 3', link: 'en/page-3' },
-	// 	],
-	// },
+	en: {
+		'Section Header': [
+			{ text: 'Introduction', link: 'en/introduction' },
+			{ text: 'TossiCat core', link: 'en/TossiCat_core' },
+			{ text: 'Page 2', link: 'en/page-2' },
+			{ text: 'Page 3', link: 'en/page-3' },
+		],
+	},
 	ko: {
 		'Section Header': [
 			{ text: 'Introduction', link: 'ko/introduction' },

@@ -3,17 +3,18 @@
 type Props = {
 	path: string;
 };
-const { path } = Astro.props as Props;
+// const { path } = Astro.props as Props;
+const today = new Date();
 ---
 
 <footer>
 	<!-- <AvatarList path={path} /> -->
+	&copy; {today.getFullYear()} TossiCat Project. All rights reserved.
 </footer>
 
 <style>
 	footer {
-		margin-top: auto;
-		padding: 2rem;
-		border-top: 3px solid var(--theme-divider);
+		padding: 25px;
+		text-align: center;
 	}
 </style>
