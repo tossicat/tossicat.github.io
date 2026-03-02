@@ -1,17 +1,14 @@
 export const SITE = {
 	title: 'TossiCat',
-	description: 'Your website description.',
+	description: '한글 조사 변환 라이브러리 — 러스트로 작성된 토시캣 프로젝트 문서',
 	defaultLanguage: 'ko',
 };
 
 export const OPEN_GRAPH = {
 	image: {
-		src: 'https://github.com/withastro/astro/blob/main/assets/social/banner-minimal.png?raw=true',
-		alt:
-			'astro logo on a starry expanse of space,' +
-			' with a purple saturn-like planet floating in the right foreground',
+		src: 'https://tossicat.github.io/default-og-image.png',
+		alt: 'TossiCat — 한글 조사 변환 라이브러리',
 	},
-	twitter: 'astrodotbuild',
 };
 
 // This is the type of the frontmatter you put in the docs markdown files.
@@ -31,24 +28,13 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/withastro/astro/tree/main/examples/docs`;
-
-export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
-
-// See "Algolia" section of the README for more information.
-export const ALGOLIA = {
-	indexName: 'XXXXXXXXXX',
-	appId: 'XXXXXXXXXX',
-	apiKey: 'XXXXXXXXXX',
-};
-
 export type Sidebar = Record<
 	typeof KNOWN_LANGUAGE_CODES[number],
 	Record<string, { text: string; link: string }[]>
 >;
 export const SIDEBAR: Sidebar = {
 	en: {
-		'Section Header': [
+		'Project List': [
 			{ text: 'Introduction', link: 'en/introduction' },
 			{ text: 'TossiCat core', link: 'en/TossiCat_core' },
 			{ text: 'Page 2', link: 'en/page-2' },
@@ -56,7 +42,7 @@ export const SIDEBAR: Sidebar = {
 		],
 	},
 	ko: {
-		'Section Header': [
+		'Project List': [
 			{ text: 'Introduction', link: 'ko/introduction' },
 			{ text: 'TossiCat core', link: 'ko/TossiCat_core' },
 			{ text: 'Page 2', link: 'ko/page-2' },

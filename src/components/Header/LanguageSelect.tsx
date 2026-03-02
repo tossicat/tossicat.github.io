@@ -1,9 +1,8 @@
-/** @jsxImportSource react */
-import type { FunctionComponent } from 'react';
+import type { FunctionalComponent } from 'preact';
 import './LanguageSelect.css';
 import { KNOWN_LANGUAGES, langPathRegex } from '../../languages';
 
-const LanguageSelect: FunctionComponent<{ lang: string }> = ({ lang }) => {
+const LanguageSelect: FunctionalComponent<{ lang: string }> = ({ lang }) => {
 	return (
 		<div className="language-select-wrapper">
 			<svg
