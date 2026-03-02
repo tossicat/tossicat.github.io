@@ -5,33 +5,20 @@ type Props = {
 const { size } = Astro.props as Props;
 ---
 
-<svg
-	class="logo"
+<img
+	class="logo-img"
+	src="/logo.png"
+	alt="TossiCat Logo"
 	width={size}
 	height={size}
-	viewBox="0 0 256 256"
-	fill="none"
-	xmlns="http://www.w3.org/2000/svg"
->
-	<style>
-		.cat-shape {
-			fill: var(--theme-text-accent);
-		}
-	</style>
-	<title>TossiCat Logo</title>
-	<!-- Cat ears -->
-	<path class="cat-shape" d="M56 108 L36 28 L100 80 Z" />
-	<path class="cat-shape" d="M200 108 L220 28 L156 80 Z" />
-	<!-- Cat head -->
-	<ellipse class="cat-shape" cx="128" cy="152" rx="88" ry="80" />
-	<!-- Eyes -->
-	<ellipse cx="96" cy="140" rx="14" ry="18" fill="var(--theme-bg, white)" />
-	<ellipse cx="160" cy="140" rx="14" ry="18" fill="var(--theme-bg, white)" />
-	<ellipse cx="96" cy="142" rx="8" ry="12" fill="var(--theme-text, black)" />
-	<ellipse cx="160" cy="142" rx="8" ry="12" fill="var(--theme-text, black)" />
-	<!-- Nose -->
-	<path d="M128 164 L120 176 L136 176 Z" fill="var(--theme-bg, white)" />
-	<!-- Mouth -->
-	<path d="M128 176 Q116 190 104 180" stroke="var(--theme-bg, white)" stroke-width="4" fill="none" stroke-linecap="round" />
-	<path d="M128 176 Q140 190 152 180" stroke="var(--theme-bg, white)" stroke-width="4" fill="none" stroke-linecap="round" />
-</svg>
+/>
+
+<style>
+	.logo-img {
+		object-fit: contain;
+	}
+
+	:root.theme-dark .logo-img {
+		filter: invert(1);
+	}
+</style>
