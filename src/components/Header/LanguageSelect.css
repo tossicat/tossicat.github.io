@@ -1,6 +1,7 @@
 .language-select {
 	flex-grow: 1;
-	width: 48px;
+	width: auto;
+	min-width: 80px;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0.33em 0.5em;
