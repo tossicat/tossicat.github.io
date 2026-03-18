@@ -1,34 +1,90 @@
 ---
 title: TossiCat Project
-description: Docs intro
+description: Korean postposition conversion library - TossiCat Project introduction
 layout: ../../layouts/MainLayout.astro
+lang: en
 ---
 
 **Welcome to the TossiCat Project!**
 
-This project was inspired by [tossi](https://github.com/what-studio/tossi). Like **tossi**, this project started with [TossiCat core](https://github.com/tossicat/tossicat-core), which takes an arbitrary word and a postposition (called "tossi" in Korean) as input, then transforms the postposition into a natural form that fits the given word. While **tossi** was written in Python, the **TossiCat Project** is fundamentally written in [Rust](https://www.rust-lang.org). Based on this Rust implementation, we also convert it so that it can be used in Python and JavaScript, creating separate packages for each programming language. See the list below:
+This project was inspired by [tossi](https://github.com/what-studio/tossi). It takes an arbitrary word and a postposition (called "tossi" in Korean) as input, then transforms the postposition into a natural form that fits the given word.
 
-- [tossicat for Web](https://www.npmjs.com/package/@dialektike/tossicat): Makes TossiCat core usable in JavaScript.
-- [tossicat-python](https://github.com/tossicat/tossicat-python): Makes TossiCat core usable in Python.
+For example, given the following input:
 
-This is the process our TossiCat Project aims to achieve. Currently, we only deal with Korean postposition (tossi) conversion, but we plan to write Korean-related libraries in Rust and make them available in various languages as shown above.
+`"{철수, 은} {영희, 과} {밥, 를} 먹습니다."`
 
-## About the Sub-projects
+It converts to:
 
-We primarily focus on Korean language-related features.
+`"철수는 영희와 밥을 먹습니다."`
 
-### TossiCat Core Project
+## Why is this project needed?
 
-As explained above, this project is centered around [TossiCat core](https://github.com/tossicat/tossicat-core), which takes a postposition (tossi) to attach to a word as input, transforms it into a natural form, and returns the result. Why is this feature necessary? In other words, why do we need to change the postposition for each word? Let's look at an example.
+When applications compose sentences to display to users, they need to automatically attach the correct Korean postposition based on the preceding word. For example, '사과' (apple) requires '를', while '밥' (rice) requires '을'. TossiCat automates this process.
 
-When attaching the object particle (을/를) to the word '사과' (apple), you must use '를' instead of '을'. This is because the object particle requires '를' when the preceding character has no final consonant (batchim), and '을' when it does. Of course, when attaching the particle '처럼' (like) to '사과', there's no need to consider such changes, because '처럼' can be attached to any word without variation. Thus, depending on the particle, there may or may not be a need to change its form.
+Currently, it can handle **138 postpositions** and more are being added continuously.
 
-While native Korean speakers can easily distinguish and handle these cases through their education, it's not so easy for foreigners. More importantly, when an application needs to compose sentences and present them to users, a library that automates attaching the correct postposition to specific words becomes necessary. This is exactly what this project provides.
+## Project Structure
 
-The project [tossicat-python](https://github.com/tossicat/tossicat-python) makes [TossiCat core](https://github.com/tossicat/tossicat-core) available in Python using [PyO3](https://github.com/PyO3/pyo3). Additionally, [tossicat for Web](https://www.npmjs.com/package/@dialektike/tossicat) is a package compiled to WebAssembly using [wasm-pack](https://rustwasm.github.io/docs/wasm-pack/introduction.html) to make it usable in JavaScript.
+The TossiCat Project is built on a core library written in [Rust](https://www.rust-lang.org), with multiple sub-projects that make it available across various languages and environments.
 
-### NumCat Project
+### [TossiCat Core](https://github.com/tossicat/tossicat-core)
 
-Currently in early planning. It will be a small library that converts input numbers into Korean text. There are two ways to read numbers in Korean, and we aim to implement both.
+The core library. Written in Rust and published on [crates.io](https://crates.io/crates/tossicat). Provides functions like `postfix()`, `modify_sentence()`, and `transform()`.
 
-Good luck out there, Rustacean! 🧑‍🚀
+```rust
+use tossicat::postfix;
+println!("{:?}", postfix("사과", "을")); // Ok("사과를")
+```
+
+### [TossiCat Web](https://github.com/tossicat/tossicat-web)
+
+TossiCat Core compiled to WebAssembly for use in JavaScript. Published on [npm](https://www.npmjs.com/package/@dialektike/tossicat) as `@dialektike/tossicat`.
+
+```js
+fix("철수", "가")  // "철수가"
+fix_sentence("{철수, 은} {영희, 과} {밥, 를} 먹습니다.")
+// "철수는 영희와 밥을 먹습니다."
+```
+
+### [TossiCat Python](https://github.com/tossicat/tossicat-python)
+
+A Python binding of TossiCat Core using [PyO3](https://github.com/PyO3/pyo3). Published on [PyPI](https://pypi.org/project/tossicat-python/).
+
+```python
+import tossicat as tc
+tc.postfix("테스트", "은")  # "테스트는"
+```
+
+### [TossiCat FFI](https://github.com/tossicat/tossicat-ffi)
+
+C FFI bindings for TossiCat Core. Enables Korean postposition conversion in game engines (Unreal, Unity, Godot, etc.) and C/C++ projects.
+
+```c
+char* result = tossicat_postfix("포션", "을");
+printf("%s 획득했습니다!\n", result);  // "포션을 획득했습니다!"
+tossicat_free(result);
+```
+
+### [TossiCat CMD](https://github.com/tossicat/tossicat-cmd)
+
+A CLI application for postposition conversion. Perform conversions directly from the terminal.
+
+```console
+$ tossi -w 사과 -t 을
+사과를
+
+$ tossi -s "{철수, 은} {영희, 과} {밥, 를} 먹습니다."
+철수는 영희와 밥을 먹습니다.
+```
+
+## Architecture
+
+```
+tossicat-core (Rust core library)
+├── tossicat-web     (JavaScript/WebAssembly)
+├── tossicat-python  (Python binding)
+├── tossicat-ffi     (C FFI binding)
+└── tossicat-cmd     (CLI application)
+```
+
+All sub-projects are built on top of tossicat-core, providing interfaces tailored to each language and environment. See the sidebar for detailed documentation on each project.

@@ -34,19 +34,27 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
 	en: {
-		'Project List': [
+		'Overview': [
 			{ text: 'Introduction', link: 'en/introduction' },
-			{ text: 'TossiCat core', link: 'en/TossiCat_core' },
-			{ text: 'Page 2', link: 'en/page-2' },
-			{ text: 'Page 3', link: 'en/page-3' },
+		],
+		'Projects': [
+			{ text: 'TossiCat Core', link: 'en/tossicat-core' },
+			{ text: 'TossiCat Web', link: 'en/tossicat-web' },
+			{ text: 'TossiCat Python', link: 'en/tossicat-python' },
+			{ text: 'TossiCat FFI', link: 'en/tossicat-ffi' },
+			{ text: 'TossiCat CMD', link: 'en/tossicat-cmd' },
 		],
 	},
 	ko: {
-		'Project List': [
-			{ text: 'Introduction', link: 'ko/introduction' },
-			{ text: 'TossiCat core', link: 'ko/TossiCat_core' },
-			{ text: 'Page 2', link: 'ko/page-2' },
-			{ text: 'Page 3', link: 'ko/page-3' },
+		'개요': [
+			{ text: '소개', link: 'ko/introduction' },
+		],
+		'프로젝트': [
+			{ text: 'TossiCat Core', link: 'ko/tossicat-core' },
+			{ text: 'TossiCat Web', link: 'ko/tossicat-web' },
+			{ text: 'TossiCat Python', link: 'ko/tossicat-python' },
+			{ text: 'TossiCat FFI', link: 'ko/tossicat-ffi' },
+			{ text: 'TossiCat CMD', link: 'ko/tossicat-cmd' },
 		],
 	},
 };
