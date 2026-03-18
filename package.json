@@ -12,12 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.0",
     "@astrojs/preact": "^4.0.0",
-    "preact": "^10.25.0",
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.0.0",
+    "astro": "^5.0.0",
+    "preact": "^10.25.0"
   },
   "devDependencies": {
+    "@types/html-escaper": "^3.0.4",
     "html-escaper": "^3.0.3"
   }
 }
